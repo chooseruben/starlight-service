@@ -1,0 +1,557 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXContainerItemProxy section */
+		CA45A96530A27C5200C2DA76 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CA45A94C30A27C5000C2DA76 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CA45A95330A27C5000C2DA76;
+			remoteInfo = "Plumbing App";
+		};
+		CA45A96F30A27C5200C2DA76 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CA45A94C30A27C5000C2DA76 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CA45A95330A27C5000C2DA76;
+			remoteInfo = "Plumbing App";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		CA45A95430A27C5000C2DA76 /* Plumbing App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Plumbing App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA45A96430A27C5200C2DA76 /* Plumbing AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Plumbing AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA45A96E30A27C5200C2DA76 /* Plumbing AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Plumbing AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		CA45A95630A27C5000C2DA76 /* Plumbing App */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "Plumbing App";
+			sourceTree = "<group>";
+		};
+		CA45A96730A27C5200C2DA76 /* Plumbing AppTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "Plumbing AppTests";
+			sourceTree = "<group>";
+		};
+		CA45A97130A27C5200C2DA76 /* Plumbing AppUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "Plumbing AppUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CA45A95130A27C5000C2DA76 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CA45A96130A27C5200C2DA76 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CA45A96B30A27C5200C2DA76 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CA45A94B30A27C5000C2DA76 = {
+			isa = PBXGroup;
+			children = (
+				CA45A95630A27C5000C2DA76 /* Plumbing App */,
+				CA45A96730A27C5200C2DA76 /* Plumbing AppTests */,
+				CA45A97130A27C5200C2DA76 /* Plumbing AppUITests */,
+				CA45A95530A27C5000C2DA76 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CA45A95530A27C5000C2DA76 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CA45A95430A27C5000C2DA76 /* Plumbing App.app */,
+				CA45A96430A27C5200C2DA76 /* Plumbing AppTests.xctest */,
+				CA45A96E30A27C5200C2DA76 /* Plumbing AppUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CA45A95330A27C5000C2DA76 /* Plumbing App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CA45A97830A27C5200C2DA76 /* Build configuration list for PBXNativeTarget "Plumbing App" */;
+			buildPhases = (
+				CA45A95030A27C5000C2DA76 /* Sources */,
+				CA45A95130A27C5000C2DA76 /* Frameworks */,
+				CA45A95230A27C5000C2DA76 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				CA45A95630A27C5000C2DA76 /* Plumbing App */,
+			);
+			name = "Plumbing App";
+			packageProductDependencies = (
+			);
+			productName = "Plumbing App";
+			productReference = CA45A95430A27C5000C2DA76 /* Plumbing App.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CA45A96330A27C5200C2DA76 /* Plumbing AppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CA45A97B30A27C5200C2DA76 /* Build configuration list for PBXNativeTarget "Plumbing AppTests" */;
+			buildPhases = (
+				CA45A96030A27C5200C2DA76 /* Sources */,
+				CA45A96130A27C5200C2DA76 /* Frameworks */,
+				CA45A96230A27C5200C2DA76 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CA45A96630A27C5200C2DA76 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				CA45A96730A27C5200C2DA76 /* Plumbing AppTests */,
+			);
+			name = "Plumbing AppTests";
+			packageProductDependencies = (
+			);
+			productName = "Plumbing AppTests";
+			productReference = CA45A96430A27C5200C2DA76 /* Plumbing AppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		CA45A96D30A27C5200C2DA76 /* Plumbing AppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CA45A97E30A27C5200C2DA76 /* Build configuration list for PBXNativeTarget "Plumbing AppUITests" */;
+			buildPhases = (
+				CA45A96A30A27C5200C2DA76 /* Sources */,
+				CA45A96B30A27C5200C2DA76 /* Frameworks */,
+				CA45A96C30A27C5200C2DA76 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CA45A97030A27C5200C2DA76 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				CA45A97130A27C5200C2DA76 /* Plumbing AppUITests */,
+			);
+			name = "Plumbing AppUITests";
+			packageProductDependencies = (
+			);
+			productName = "Plumbing AppUITests";
+			productReference = CA45A96E30A27C5200C2DA76 /* Plumbing AppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CA45A94C30A27C5000C2DA76 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1620;
+				LastUpgradeCheck = 1620;
+				TargetAttributes = {
+					CA45A95330A27C5000C2DA76 = {
+						CreatedOnToolsVersion = 16.2;
+					};
+					CA45A96330A27C5200C2DA76 = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = CA45A95330A27C5000C2DA76;
+					};
+					CA45A96D30A27C5200C2DA76 = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = CA45A95330A27C5000C2DA76;
+					};
+				};
+			};
+			buildConfigurationList = CA45A94F30A27C5000C2DA76 /* Build configuration list for PBXProject "Plumbing App" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CA45A94B30A27C5000C2DA76;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = CA45A95530A27C5000C2DA76 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CA45A95330A27C5000C2DA76 /* Plumbing App */,
+				CA45A96330A27C5200C2DA76 /* Plumbing AppTests */,
+				CA45A96D30A27C5200C2DA76 /* Plumbing AppUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CA45A95230A27C5000C2DA76 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CA45A96230A27C5200C2DA76 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CA45A96C30A27C5200C2DA76 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CA45A95030A27C5000C2DA76 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CA45A96030A27C5200C2DA76 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CA45A96A30A27C5200C2DA76 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CA45A96630A27C5200C2DA76 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CA45A95330A27C5000C2DA76 /* Plumbing App */;
+			targetProxy = CA45A96530A27C5200C2DA76 /* PBXContainerItemProxy */;
+		};
+		CA45A97030A27C5200C2DA76 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CA45A95330A27C5000C2DA76 /* Plumbing App */;
+			targetProxy = CA45A96F30A27C5200C2DA76 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		CA45A97630A27C5200C2DA76 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		CA45A97730A27C5200C2DA76 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CA45A97930A27C5200C2DA76 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Plumbing App/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "plumbing.app.Plumbing-App";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CA45A97A30A27C5200C2DA76 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Plumbing App/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "plumbing.app.Plumbing-App";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		CA45A97C30A27C5200C2DA76 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "plumbing.app.Plumbing-AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Plumbing App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Plumbing App";
+			};
+			name = Debug;
+		};
+		CA45A97D30A27C5200C2DA76 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "plumbing.app.Plumbing-AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Plumbing App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Plumbing App";
+			};
+			name = Release;
+		};
+		CA45A97F30A27C5200C2DA76 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "plumbing.app.Plumbing-AppUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Plumbing App";
+			};
+			name = Debug;
+		};
+		CA45A98030A27C5200C2DA76 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "plumbing.app.Plumbing-AppUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Plumbing App";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CA45A94F30A27C5000C2DA76 /* Build configuration list for PBXProject "Plumbing App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CA45A97630A27C5200C2DA76 /* Debug */,
+				CA45A97730A27C5200C2DA76 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CA45A97830A27C5200C2DA76 /* Build configuration list for PBXNativeTarget "Plumbing App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CA45A97930A27C5200C2DA76 /* Debug */,
+				CA45A97A30A27C5200C2DA76 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CA45A97B30A27C5200C2DA76 /* Build configuration list for PBXNativeTarget "Plumbing AppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CA45A97C30A27C5200C2DA76 /* Debug */,
+				CA45A97D30A27C5200C2DA76 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CA45A97E30A27C5200C2DA76 /* Build configuration list for PBXNativeTarget "Plumbing AppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CA45A97F30A27C5200C2DA76 /* Debug */,
+				CA45A98030A27C5200C2DA76 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CA45A94C30A27C5000C2DA76 /* Project object */;
+}

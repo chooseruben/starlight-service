@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/images/app-icon.png"
+  <img src="docs/images/app-icon.PNG"
        alt="Starlight Service app icon"
        width="160">
 </p>

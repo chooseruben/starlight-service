@@ -1,3 +1,9 @@
+<p align="center">
+  <img src="docs/images/app-icon.png"
+       alt="Starlight Service app icon"
+       width="160">
+</p>
+
 # Starlight Service
 
 An iOS app being developed to help a plumbing business organize

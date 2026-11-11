@@ -1,21 +1,30 @@
-//
-//  ContentView.swift
-//  Plumbing App
-//
-//  Created by Ruben De La Torre on 11/9/26.
-//
 
 import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        TabView {
+            HomeView()
+                .tabItem {
+                    Label("Home", systemImage: "house.fill")
+                }
+
+            CalendarView()
+                .tabItem {
+                    Label("Calendar", systemImage: "calendar")
+                }
+
+            CustomersView()
+                .tabItem {
+                    Label("Customers", systemImage: "person.2.fill")
+                }
+
+            PriceBookView()
+                .tabItem {
+                    Label("Price Book", systemImage: "book.closed.fill")
+                }
         }
-        .padding()
+        .tint(.blue)
     }
 }
 

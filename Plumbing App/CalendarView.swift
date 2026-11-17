@@ -9,6 +9,7 @@ struct PlumbingAppointment: Identifiable, Codable, Equatable {
     var date: Date
     var notes: String
     var status: String = "Scheduled"
+    var customerID: UUID? = nil
 }
 
 struct CalendarView: View {
@@ -17,14 +18,29 @@ struct CalendarView: View {
         Self.loadAppointments()
 
     @State private var selectedDate = Date()
-    @State private var showingAddAppointment = false
-    @State private var appointmentToEdit: PlumbingAppointment?
-    @State private var showingEditAppointment = false
+    @State private var activeSheet: AppointmentSheet?
+
+    private enum AppointmentSheet: Identifiable {
+        case add
+        case edit(PlumbingAppointment)
+
+        var id: String {
+            switch self {
+            case .add:
+                return "add"
+            case .edit(let appointment):
+                return appointment.id.uuidString
+            }
+        }
+    }
+
 
     @State private var customerName = ""
+    @State private var selectedCustomerID: UUID?
     @State private var service = ""
     @State private var address = ""
     @State private var showingAddressSearch = false
+    @State private var showingCustomerPicker = false
     @State private var appointmentDate = Date()
     @State private var notes = ""
 
@@ -85,15 +101,30 @@ struct CalendarView: View {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
                         appointmentDate = selectedDate
-                        showingAddAppointment = true
+                        activeSheet = .add
                     } label: {
                         Image(systemName: "plus")
                     }
+
                 }
             }
-            .sheet(isPresented: $showingAddAppointment) {
-                addAppointmentSheet
+            .sheet(item: $activeSheet) { sheet in
+                switch sheet {
+                case .add:
+                    addAppointmentSheet
+
+                case .edit(let appointment):
+                    EditAppointmentView(appointment: appointment) { updated in
+                        if let index = appointments.firstIndex(
+                            where: { $0.id == updated.id }
+                        ) {
+                            appointments[index] = updated
+                            selectedDate = updated.date
+                        }
+                    }
+                }
             }
+
             .onChange(of: appointments) { _, updated in
                 saveAppointments(updated)
             }
@@ -142,12 +173,12 @@ struct CalendarView: View {
                 Spacer()
 
                 Button {
-                    appointmentToEdit = appointment
-                    showingEditAppointment = true
+                    activeSheet = .edit(appointment)
                 } label: {
                     Label("Edit", systemImage: "pencil")
                 }
                 .buttonStyle(.borderless)
+
 
                 Button(role: .destructive) {
 
@@ -169,7 +200,36 @@ struct CalendarView: View {
         NavigationStack {
             Form {
                 Section("Customer Information") {
+                    
+                    Button {
+                        showingCustomerPicker = true
+                    } label: {
+                        Label(
+                            "Select Existing Customer",
+                            systemImage: "person.crop.circle.badge.checkmark"
+                        )
+                    }
+                    
                     TextField("Customer Name", text: $customerName)
+                        .onChange(of: customerName) { _, newName in
+                            if let selectedCustomerID {
+                                let saved = UserDefaults.standard.data(
+                                    forKey: "savedPlumbingCustomers"
+                                ) ?? Data()
+
+                                let customers = (try? JSONDecoder().decode(
+                                    [PlumbingCustomer].self,
+                                    from: saved
+                                )) ?? []
+
+                                if let selected = customers.first(
+                                    where: { $0.id == selectedCustomerID }
+                                ), selected.name != newName {
+                                    self.selectedCustomerID = nil
+                                }
+                            }
+                        }
+
                     TextField("Service Type", text: $service)
                     Button {
                         showingAddressSearch = true
@@ -212,7 +272,7 @@ struct CalendarView: View {
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Cancel") {
-                        showingAddAppointment = false
+                        activeSheet = nil
                     }
                 }
 
@@ -234,22 +294,13 @@ struct CalendarView: View {
                 AddressSearchView(address: $address)
             }
             
-
-            .sheet(isPresented: $showingEditAppointment) {
-                if let appointment = appointmentToEdit {
-                    EditAppointmentView(appointment: appointment) { updated in
-                        if let index = appointments.firstIndex(
-                            where: { $0.id == updated.id }
-                        ) {
-                            appointments[index] = updated
-                            selectedDate = updated.date
-                        }
-
-                        appointmentToEdit = nil
-                    }
+            .sheet(isPresented: $showingCustomerPicker) {
+                CustomerPickerView { customer in
+                    selectedCustomerID = customer.id
+                    customerName = customer.name
+                    address = customer.address
                 }
             }
-
 
         }
     }
@@ -261,8 +312,10 @@ struct CalendarView: View {
             service: service,
             address: address,
             date: appointmentDate,
-            notes: notes
+            notes: notes,
+            customerID: selectedCustomerID
         )
+
 
         appointments.append(appointment)
         selectedDate = appointmentDate
@@ -271,8 +324,9 @@ struct CalendarView: View {
         service = ""
         address = ""
         notes = ""
+        selectedCustomerID = nil
 
-        showingAddAppointment = false
+        activeSheet = nil
     }
 
     private func saveAppointments(

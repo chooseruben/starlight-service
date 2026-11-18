@@ -87,42 +87,33 @@ struct CustomerDetailView: View {
                     )
                 } else {
                     ForEach(customerJobs) { job in
-                        NavigationLink {
-                            AppointmentDetailView(
-                                appointment: job
-                            )
-                        } label: {
-                            VStack(
-                                alignment: .leading,
-                                spacing: 8
-                            ) {
-                                Text(job.service)
-                                    .font(.headline)
+                        VStack(alignment: .leading, spacing: 10) {
+                            NavigationLink {
+                                AppointmentDetailView(appointment: job)
+                            } label: {
+                                VStack(alignment: .leading, spacing: 6) {
+                                    Text(job.service)
+                                        .font(.headline)
 
-                                Text(
-                                    job.date,
-                                    format: .dateTime
-                                        .month()
-                                        .day()
-                                        .year()
-                                        .hour()
-                                        .minute()
-                                )
-                                .font(.subheadline)
-                                .foregroundStyle(.secondary)
-
-                                Text(job.status)
-                                    .font(.caption)
-                                    .fontWeight(.semibold)
-                                    .foregroundStyle(
-                                        job.status == "Completed"
-                                            ? .green
-                                            : .blue
+                                    Text(
+                                        job.date,
+                                        format: .dateTime
+                                            .month()
+                                            .day()
+                                            .year()
+                                            .hour()
+                                            .minute()
                                     )
+                                    .font(.subheadline)
+                                    .foregroundStyle(.secondary)
+                                }
+                                .padding(.vertical, 4)
                             }
-                            .padding(.vertical, 4)
+
+                            JobStatusMenu(appointmentID: job.id)
                         }
                     }
+
                 }
             }
 

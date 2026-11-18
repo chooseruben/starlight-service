@@ -1,3 +1,5 @@
+// xcode: set sdk=iOS
+
 
 import SwiftUI
 
@@ -16,7 +18,8 @@ struct CalendarView: View {
 
     @State private var appointments: [PlumbingAppointment] =
         Self.loadAppointments()
-
+    @AppStorage("savedPlumbingAppointments")
+    private var sharedAppointmentsData: Data = Data()
     @State private var selectedDate = Date()
     @State private var activeSheet: AppointmentSheet?
 
@@ -126,12 +129,27 @@ struct CalendarView: View {
             }
 
             .onChange(of: appointments) { _, updated in
-                saveAppointments(updated)
+                if updated != Self.loadAppointments() {
+                    saveAppointments(updated)
+                }
             }
             
             .onAppear {
                 appointments = Self.loadAppointments()
             }
+            .onChange(of: sharedAppointmentsData) { _, newData in
+                guard let updated = try? JSONDecoder().decode(
+                    [PlumbingAppointment].self,
+                    from: newData
+                ) else {
+                    return
+                }
+
+                if appointments != updated {
+                    appointments = updated
+                }
+            }
+
 
         }
     }
@@ -166,9 +184,7 @@ struct CalendarView: View {
 
             
             HStack {
-                Text(appointment.status)
-                    .font(.caption)
-                    .foregroundStyle(.green)
+                JobStatusMenu(appointmentID: appointment.id)
 
                 Spacer()
 
@@ -211,6 +227,7 @@ struct CalendarView: View {
                     }
                     
                     TextField("Customer Name", text: $customerName)
+                        .textInputAutocapitalization(.words)
                         .onChange(of: customerName) { _, newName in
                             if let selectedCustomerID {
                                 let saved = UserDefaults.standard.data(

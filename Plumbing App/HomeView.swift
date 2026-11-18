@@ -119,15 +119,24 @@ struct HomeView: View {
                     
                     } else {
                         ForEach(todaysAppointments) { appointment in
-                            NavigationLink {
-                                AppointmentDetailView(
-                                    appointment: appointment
-                                )
-                            } label: {
-                                appointmentRow(appointment)
+                            VStack(alignment: .leading, spacing: 8) {
+                                NavigationLink {
+                                    AppointmentDetailView(
+                                        appointment: appointment
+                                    )
+                                } label: {
+                                    appointmentRow(appointment)
+                                }
+                                .buttonStyle(.plain)
+
+                                JobStatusMenu(appointmentID: appointment.id)
+                                    .padding(.horizontal)
+                                    .padding(.bottom, 8)
                             }
-                            .buttonStyle(.plain)
+                            .background(Color.gray.opacity(0.08))
+                            .clipShape(RoundedRectangle(cornerRadius: 12))
                         }
+
                     }
 
 
@@ -197,10 +206,6 @@ struct HomeView: View {
                 .font(.caption)
                 .foregroundStyle(.secondary)
             }
-
-            Text(appointment.status)
-                .font(.caption)
-                .foregroundStyle(.green)
         }
         .padding()
         .frame(maxWidth: .infinity, alignment: .leading)

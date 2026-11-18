@@ -17,6 +17,10 @@ struct CustomersView: View {
 
     @State private var searchText = ""
     @State private var activeSheet: CustomerSheet?
+    @State private var customerPendingDeletion: PlumbingCustomer?
+    @State private var linkedJobCount = 0
+    @State private var showingDeleteAlert = false
+
 
     private static let storageKey = "savedPlumbingCustomers"
 
@@ -125,6 +129,39 @@ struct CustomersView: View {
                     }
                 }
             }
+            .alert(
+                linkedJobCount > 0
+                    ? "Cannot Delete Customer"
+                    : "Delete Customer?",
+                isPresented: $showingDeleteAlert
+            ) {
+                if linkedJobCount > 0 {
+                    Button("OK", role: .cancel) {
+                        customerPendingDeletion = nil
+                    }
+                } else {
+                    Button("Cancel", role: .cancel) {
+                        customerPendingDeletion = nil
+                    }
+
+                    Button("Delete", role: .destructive) {
+                        confirmCustomerDeletion()
+                    }
+                }
+            } message: {
+                if let customer = customerPendingDeletion {
+                    if linkedJobCount > 0 {
+                        Text(
+                            "\(customer.name) has \(linkedJobCount) linked plumbing job(s). Reassign or unlink these jobs before deleting this customer."
+                        )
+                    } else {
+                        Text(
+                            "Are you sure you want to delete \(customer.name)? This action cannot be undone."
+                        )
+                    }
+                }
+            }
+
             .onChange(of: customers) { _, updated in
                 saveCustomers(updated)
             }
@@ -166,14 +203,65 @@ struct CustomersView: View {
     }
 
     private func deleteCustomers(at offsets: IndexSet) {
-        let ids = offsets.map {
-            filteredCustomers[$0].id
+        guard let index = offsets.first else { return }
+
+        let customer = filteredCustomers[index]
+
+        // Retrieve the latest saved appointments
+        let data = UserDefaults.standard.data(
+            forKey: "savedPlumbingAppointments"
+        ) ?? Data()
+
+        let appointments = (try? JSONDecoder().decode(
+            [PlumbingAppointment].self,
+            from: data
+        )) ?? []
+
+        // Count appointments linked to this customer
+        linkedJobCount = appointments.filter {
+            $0.customerID == customer.id
+        }.count
+
+        customerPendingDeletion = customer
+        showingDeleteAlert = true
+    }
+
+    private func confirmCustomerDeletion() {
+        guard let customer = customerPendingDeletion else {
+            return
+        }
+
+        // Check the latest saved data again before deleting
+        let appointments: [PlumbingAppointment]
+
+        if let data = UserDefaults.standard.data(
+            forKey: "savedPlumbingAppointments"
+        ) {
+            guard let decoded = try? JSONDecoder().decode(
+                [PlumbingAppointment].self,
+                from: data
+            ) else {
+                return
+            }
+
+            appointments = decoded
+        } else {
+            appointments = []
+        }
+
+        guard !appointments.contains(where: {
+            $0.customerID == customer.id
+        }) else {
+            return
         }
 
         customers.removeAll {
-            ids.contains($0.id)
+            $0.id == customer.id
         }
+
+        customerPendingDeletion = nil
     }
+
 
     private func saveCustomers(
         _ customers: [PlumbingCustomer]
@@ -238,9 +326,20 @@ struct CustomerFormView: View {
             Form {
                 Section("Personal Information") {
                     TextField("Full Name", text: $name)
+                        .textInputAutocapitalization(.words)
+                        .autocorrectionDisabled()
+
 
                     TextField("Phone Number", text: $phone)
                         .keyboardType(.phonePad)
+                        .onChange(of: phone) { _, newValue in
+                            let formatted = PhoneNumberFormatter.format(newValue)
+
+                            if phone != formatted {
+                                phone = formatted
+                            }
+                        }
+
 
                     TextField("Email Address", text: $email)
                         .keyboardType(.emailAddress)
@@ -303,8 +402,8 @@ struct CustomerFormView: View {
             id: customer?.id ?? UUID(),
             name: name.trimmingCharacters(
                 in: .whitespacesAndNewlines
-            ),
-            phone: phone,
+            ).localizedCapitalized,
+            phone: PhoneNumberFormatter.format(phone),
             email: email,
             address: address,
             notes: notes

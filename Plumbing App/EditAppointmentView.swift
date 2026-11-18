@@ -9,6 +9,7 @@ struct EditAppointmentView: View {
     let onSave: (PlumbingAppointment) -> Void
 
     @State private var customerName: String
+    @State private var customerID: UUID?
     @State private var service: String
     @State private var address: String
     @State private var date: Date
@@ -16,6 +17,7 @@ struct EditAppointmentView: View {
     @State private var status: String
 
     @State private var showingAddressSearch = false
+    @State private var showingCustomerPicker = false
 
     private let statuses = [
         "Scheduled",
@@ -32,6 +34,7 @@ struct EditAppointmentView: View {
         self.onSave = onSave
 
         _customerName = State(initialValue: appointment.customerName)
+        _customerID = State(initialValue: appointment.customerID)
         _service = State(initialValue: appointment.service)
         _address = State(initialValue: appointment.address)
         _date = State(initialValue: appointment.date)
@@ -43,10 +46,45 @@ struct EditAppointmentView: View {
         NavigationStack {
             Form {
                 Section("Customer Information") {
+
+                    Button {
+                        showingCustomerPicker = true
+                    } label: {
+                        Label(
+                            customerID == nil
+                                ? "Link Existing Customer"
+                                : "Change Linked Customer",
+                            systemImage: "person.crop.circle.badge.checkmark"
+                        )
+                    }
+
+                    if customerID != nil {
+                        Label(
+                            "Linked to Customer Directory",
+                            systemImage: "checkmark.circle.fill"
+                        )
+                        .font(.caption)
+                        .foregroundStyle(.green)
+
+                        Button("Unlink Customer", role: .destructive) {
+                            customerID = nil
+                        }
+                    }
+
                     TextField(
                         "Customer Name",
-                        text: $customerName
+                        text: Binding(
+                            get: { customerName },
+                            set: { newName in
+                                if newName != customerName {
+                                    customerID = nil
+                                }
+                                customerName = newName
+                            }
+                        )
                     )
+                    .textInputAutocapitalization(.words)
+
 
                     TextField(
                         "Service",
@@ -115,6 +153,14 @@ struct EditAppointmentView: View {
             .sheet(isPresented: $showingAddressSearch) {
                 AddressSearchView(address: $address)
             }
+            .sheet(isPresented: $showingCustomerPicker) {
+                CustomerPickerView { customer in
+                    customerName = customer.name
+                    address = customer.address
+                    customerID = customer.id
+                }
+            }
+
         }
     }
 
@@ -127,6 +173,7 @@ struct EditAppointmentView: View {
         updated.date = date
         updated.notes = notes
         updated.status = status
+        updated.customerID = customerID
 
         onSave(updated)
         dismiss()

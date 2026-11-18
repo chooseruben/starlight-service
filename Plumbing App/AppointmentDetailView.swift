@@ -5,6 +5,22 @@ struct AppointmentDetailView: View {
 
     @AppStorage("savedPlumbingAppointments")
     private var appointmentsData: Data = Data()
+    @AppStorage("savedPlumbingCustomers")
+    private var customersData: Data = Data()
+
+    private var linkedCustomer: PlumbingCustomer? {
+        guard let id = currentAppointment.customerID,
+              let customers = try? JSONDecoder().decode(
+                  [PlumbingCustomer].self,
+                  from: customersData
+              )
+        else {
+            return nil
+        }
+
+        return customers.first { $0.id == id }
+    }
+
 
     @State private var currentAppointment: PlumbingAppointment
     @State private var showingEdit = false
@@ -22,11 +38,7 @@ struct AppointmentDetailView: View {
                         .font(.largeTitle)
                         .fontWeight(.bold)
 
-                    Text(currentAppointment.status)
-                        .font(.subheadline)
-                        .foregroundStyle(
-                            statusColor(currentAppointment.status)
-                        )
+                    JobStatusMenu(appointmentID: currentAppointment.id)
                 }
 
                 Divider()
@@ -69,6 +81,57 @@ struct AppointmentDetailView: View {
                 }
 
                 Divider()
+                
+                if let customer = linkedCustomer {
+                    VStack(alignment: .leading, spacing: 12) {
+                        Text("Contact Customer")
+                            .font(.title2)
+                            .fontWeight(.bold)
+
+                        HStack(spacing: 12) {
+                            let phone = PhoneNumberFormatter.dialable(
+                                customer.phone
+                            )
+
+                            if !phone.isEmpty,
+                               let callURL = URL(string: "tel:\(phone)"),
+                               let textURL = URL(string: "sms:\(phone)") {
+
+                                Link(destination: callURL) {
+                                    contactButton(
+                                        "Call",
+                                        icon: "phone.fill",
+                                        color: .green
+                                    )
+                                }
+
+                                Link(destination: textURL) {
+                                    contactButton(
+                                        "Text",
+                                        icon: "message.fill",
+                                        color: .blue
+                                    )
+                                }
+                            }
+
+                            if !customer.email.isEmpty,
+                               let encoded = customer.email.addingPercentEncoding(
+                                   withAllowedCharacters: .urlPathAllowed
+                               ),
+                               let emailURL = URL(string: "mailto:\(encoded)") {
+
+                                Link(destination: emailURL) {
+                                    contactButton(
+                                        "Email",
+                                        icon: "envelope.fill",
+                                        color: .orange
+                                    )
+                                }
+                            }
+                        }
+                    }
+                }
+
 
                 if !currentAppointment.address.isEmpty {
                     VStack(alignment: .leading, spacing: 12) {
@@ -117,6 +180,41 @@ struct AppointmentDetailView: View {
                 saveUpdatedAppointment(updated)
             }
         }
+        .onChange(of: appointmentsData) { _, newData in
+            guard let appointments = try? JSONDecoder().decode(
+                [PlumbingAppointment].self,
+                from: newData
+            ),
+            let updated = appointments.first(where: {
+                $0.id == currentAppointment.id
+            }) else {
+                return
+            }
+
+            currentAppointment = updated
+        }
+
+    }
+    
+    private func contactButton(
+        _ title: String,
+        icon: String,
+        color: Color
+    ) -> some View {
+        VStack(spacing: 8) {
+            Image(systemName: icon)
+                .font(.title2)
+                .foregroundStyle(color)
+
+            Text(title)
+                .font(.subheadline)
+                .fontWeight(.medium)
+                .foregroundStyle(.primary)
+        }
+        .frame(maxWidth: .infinity)
+        .padding(.vertical, 16)
+        .background(color.opacity(0.1))
+        .clipShape(RoundedRectangle(cornerRadius: 12))
     }
 
     private func saveUpdatedAppointment(
